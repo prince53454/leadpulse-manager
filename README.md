@@ -59,3 +59,8 @@ The trickiest part was making the same lead workflow work cleanly in both the de
 ## Vercel deployment
 
 The project includes a Vercel configuration for the Vite frontend and Express API function. On Vercel, SQLite runs from the function's writable `/tmp` directory. This is suitable for a screening demo, but the database is temporary and instance-local, so records can reset after a cold start or when requests reach another instance. Use a hosted database such as PostgreSQL or Turso for durable production data.
+
+## Links
+
+- GitHub repository: https://github.com/prince53454/leadpulse-manager
+- Live demo: https://stitchsalesleadmanager.vercel.app
