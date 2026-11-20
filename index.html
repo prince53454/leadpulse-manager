@@ -1,2 +1,56 @@
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="theme-color" content="#f8fafc"/><title>LeadPulse — Lead Manager</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet"></head><body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8fafc">
+  <title>LeadPulse — Lead Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="LeadPulse home"><span class="brandmark">↗</span><span>LeadPulse</span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="{{LEADS_ACTIVE}}" href="/">▦ <span>All Leads</span></a>
+      <a class="{{PIPELINE_ACTIVE}}" href="/?view=pipeline">▤ <span>Pipeline</span></a>
+    </nav>
+    <div class="top-actions">
+      <form class="global-search" action="/" method="get">
+        <span aria-hidden="true">⌕</span><input type="search" name="search" value="{{SEARCH}}" placeholder="Search leads, companies..." aria-label="Search leads">
+        <input type="hidden" name="view" value="{{VIEW}}">
+      </form>
+      <details id="add-lead" class="create-wrap" {{CREATE_OPEN}}>
+        <summary class="button primary"><span>＋</span><span>Add lead</span></summary>
+        <a class="drawer-scrim" href="/" aria-label="Close lead form"></a>
+        <aside class="drawer" aria-label="Create new lead">
+          <div class="drawer-head"><div><small>LEAD MANAGEMENT</small><h2>Add a new lead</h2><p>Capture a prospect and start building a relationship.</p></div><a class="close-button" href="/" aria-label="Close">×</a></div>
+          <form class="lead-form" action="/leads" method="post">
+            <h3><span>01</span> CONTACT INFORMATION</h3>
+            <label>Full name <i>*</i><input name="name" required maxlength="120" placeholder="e.g. Olivia Rhye"></label>
+            <label>Work email <i>*</i><input name="email" type="email" required maxlength="254" placeholder="olivia@company.com"></label>
+            <div class="form-grid"><label>Phone number <i>*</i><input name="phone" required maxlength="30" placeholder="+1 (555) 000-0000"></label><label>Company <i>*</i><input name="company" required maxlength="160" placeholder="Company name"></label></div>
+            <h3><span>02</span> LEAD DETAILS</h3>
+            <label>Lead source<select name="source">{{SOURCE_OPTIONS}}</select></label>
+            <label>Pipeline status<div class="status-options">{{CREATE_STATUS_OPTIONS}}</div></label>
+            <p class="form-note">Lead details are saved to your workspace and can be updated at any time.</p>
+            <div class="drawer-footer"><a class="button outline" href="/">Cancel</a><button class="button primary" type="submit">Create lead <span>→</span></button></div>
+          </form>
+        </aside>
+      </details>
+    </div>
+  </header>
+  <main class="workspace">
+    <div class="crumb">WORKSPACE <span>/</span> <b>{{BREADCRUMB}}</b></div>
+    <section class="page-head"><div><div class="eyebrow"><i></i> SALES WORKSPACE <span>·</span> LEAD MANAGEMENT</div><h1>{{PAGE_TITLE}}</h1><p>Manage your relationships and keep every opportunity moving.</p></div><a class="button primary" href="/?add=1#add-lead">＋ <span>Add lead</span></a></section>
+    <section class="metric-row">{{METRICS}}</section>
+    {{NOTICE}}
+    {{MAIN_CONTENT}}
+    <footer class="app-footer"><span>© 2026 LeadPulse</span><span>Built for better conversations <b>♥</b></span></footer>
+  </main>
+  <nav class="mobile-dock" aria-label="Mobile navigation"><a class="{{LEADS_ACTIVE}}" href="/">▣<span>Leads</span></a><a class="{{PIPELINE_ACTIVE}}" href="/?view=pipeline">▥<span>Funnel</span></a><a class="capture-link" href="/?add=1#add-lead">＋<span>Capture</span></a><a href="/">☷<span>Workspace</span></a></nav>
+  {{MODAL}}
+</body>
+</html>
