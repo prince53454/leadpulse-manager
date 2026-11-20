@@ -36,7 +36,7 @@ Then open `http://localhost:3000`.
 - Required field and email validation in the browser and API.
 - Filter by lead status and search by name or status.
 - Status totals, sortable lead list, and a pipeline board.
-- Responsive table-to-card layout on narrow screens.
+- Responsive table-to-card layout on narrow screens.\n- Eight fictional sample leads are added automatically when the database is empty.
 
 ## API
 
@@ -64,3 +64,4 @@ The project includes a Vercel configuration for the Vite frontend and Express AP
 
 - GitHub repository: https://github.com/prince53454/leadpulse-manager
 - Live demo: https://stitchsalesleadmanager.vercel.app
+

@@ -31,6 +31,20 @@ db.exec(`CREATE TABLE IF NOT EXISTS lead_activities (
 db.exec('CREATE INDEX IF NOT EXISTS idx_activities_lead ON lead_activities(lead_id, created_at DESC)');
 db.exec('CREATE INDEX IF NOT EXISTS idx_leads_status ON leads(status)');
 db.exec('CREATE INDEX IF NOT EXISTS idx_leads_name ON leads(name COLLATE NOCASE)');
+if (!db.prepare('SELECT id FROM leads LIMIT 1').get()) {
+  const examples = [
+    ['Olivia Rhye','olivia@example.com','+1 (415) 555-0132','Acme Corporation','Website','New'],
+    ['Phoenix Baker','phoenix@example.com','+1 (415) 555-0187','Layered Systems','Referral','Contacted'],
+    ['Lana Steiner','lana@example.com','+1 (212) 555-0109','Cloudline','LinkedIn','Qualified'],
+    ['Demi Wilkinson','demi@example.com','+1 (312) 555-0164','Northstar Labs','Event','New'],
+    ['Candice Wu','candice@example.com','+1 (646) 555-0195','Orbit Analytics','Cold call','Contacted'],
+    ['Natali Craig','natali@example.com','+1 (206) 555-0118','Evergreen Health','Referral','Lost'],
+    ['Drew Cano','drew@example.com','+1 (512) 555-0140','Vertex Digital','Website','Qualified'],
+    ['Andi Lane','andi@example.com','+1 (617) 555-0173','BrightPath','LinkedIn','New']
+  ];
+  const insertExample = db.prepare('INSERT INTO leads (name,email,phone,company,source,status) VALUES (?,?,?,?,?,?)');
+  for (const example of examples) insertExample.run(...example);
+}
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '32kb' }));

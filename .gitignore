@@ -6,3 +6,4 @@ server/*.db-wal
 .env
 .vercel/
 .deep-copilot/
+.vercel
